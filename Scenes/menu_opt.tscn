@@ -1,0 +1,53 @@
+[gd_scene load_steps=4 format=3 uid="uid://sow8v3bs5a50"]
+
+[ext_resource type="Script" path="res://Scripts/btn_play.gd" id="1_gk4nr"]
+[ext_resource type="Script" path="res://Scripts/btn_opciones.gd" id="2_8bivx"]
+[ext_resource type="Script" path="res://Scripts/btn_salir.gd" id="3_b7qi7"]
+
+[node name="Menu_opt" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="menu" type="CanvasLayer" parent="."]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="menu"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.0
+offset_top = -20.0
+offset_right = 25.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2.00385, 1.61917)
+pivot_offset = Vector2(26.5, 32.5)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+alignment = 1
+
+[node name="play" type="Button" parent="menu/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "Jugar
+"
+script = ExtResource("1_gk4nr")
+
+[node name="opciones" type="Button" parent="menu/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "Opciones
+"
+script = ExtResource("2_8bivx")
+
+[node name="salir" type="Button" parent="menu/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "salir"
+script = ExtResource("3_b7qi7")

@@ -1,0 +1,122 @@
+[gd_scene load_steps=14 format=3 uid="uid://b2xi6b6ydkwxl"]
+
+[ext_resource type="Texture2D" uid="uid://dfj5bq27m7h2r" path="res://Sprites/Layer 1 (imported)_Kata_01.png" id="1_1f0bm"]
+[ext_resource type="Texture2D" uid="uid://wgkvm7ssx1qj" path="res://Sprites/Layer 1 (imported)_Kata_02.png" id="2_ajdhl"]
+[ext_resource type="Texture2D" uid="uid://3vitd8u6dsyf" path="res://Sprites/Layer 1 (imported)_Kata_03.png" id="3_q3jtd"]
+[ext_resource type="Texture2D" uid="uid://5gob8msvckld" path="res://Sprites/Layer 1 (imported)_Kata_04.png" id="4_ahlsp"]
+[ext_resource type="Texture2D" uid="uid://lnx684y64jxk" path="res://Sprites/Layer 1 (imported)_Kata_05.png" id="5_n0oqu"]
+[ext_resource type="Texture2D" uid="uid://cat3vqknbopau" path="res://Sprites/Layer 1 (imported)_Kata_06.png" id="6_k22mu"]
+[ext_resource type="Texture2D" uid="uid://gw5hkt7kcrfn" path="res://Sprites/Layer 1 (imported)_Kata_07.png" id="7_v7jvf"]
+[ext_resource type="Texture2D" uid="uid://dn2hnw2me60lg" path="res://Sprites/Layer 1 (imported)_Kata_08.png" id="8_ny8vr"]
+[ext_resource type="Texture2D" uid="uid://64025iptg7rs" path="res://Sprites/Layer 1 (imported)_Kata_09.png" id="9_71w5d"]
+[ext_resource type="Texture2D" uid="uid://b8bglrtg4d6h8" path="res://Sprites/Layer 1 (imported)_Kata_10.png" id="10_m4syq"]
+
+[sub_resource type="GDScript" id="GDScript_j3ckr"]
+resource_name = "asdaw"
+script/source = "extends CharacterBody2D
+
+@onready var animated_sprite = $AnimatedSprite2D
+
+const SPEED = 300.0
+var JUMP_VELOCITY = -1200.0
+
+const GRAVITY = 30
+
+func _process(delta):
+	
+	velocity.y += GRAVITY
+		
+	if Input.is_key_pressed(KEY_D):
+		
+		animated_sprite.play(\"walk(atras)\")
+		velocity.x = delta + SPEED
+		
+	elif Input.is_key_pressed(KEY_A):
+		
+		animated_sprite.play(\"walk(atras)\")
+		velocity.x = delta - SPEED
+		
+	else:
+				
+		velocity.x = move_toward(velocity.x, 0, SPEED)
+			
+		animated_sprite.play(\"quiet\")
+		
+	if is_on_floor():
+			
+		if  Input.is_key_pressed(KEY_W):
+				
+				velocity.y = JUMP_VELOCITY
+
+	move_and_slide()
+
+func _on_timer_timeout():
+	pass
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wn1on"]
+size = Vector2(9.58334, 20.1982)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bpx7x"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 2.0,
+"texture": ExtResource("1_1f0bm")
+}, {
+"duration": 2.0,
+"texture": ExtResource("2_ajdhl")
+}, {
+"duration": 2.0,
+"texture": ExtResource("3_q3jtd")
+}],
+"loop": true,
+"name": &"quiet",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_ahlsp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_n0oqu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_k22mu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_v7jvf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_ny8vr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_71w5d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_m4syq")
+}],
+"loop": true,
+"name": &"walk(atras)",
+"speed": 5.0
+}]
+
+[node name="Character" type="Node2D"]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+script = SubResource("GDScript_j3ckr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(7, -2)
+scale = Vector2(6.26087, 5.84211)
+shape = SubResource("RectangleShape2D_wn1on")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
+position = Vector2(4, -1)
+scale = Vector2(0.0895041, 0.0895041)
+sprite_frames = SubResource("SpriteFrames_bpx7x")
+animation = &"walk(atras)"
