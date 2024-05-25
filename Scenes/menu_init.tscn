@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://bhiy6ovoimgrs"]
 
-[ext_resource type="Script" path="res://Scripts/btn_play.gd" id="1_5pies"]
-[ext_resource type="Script" path="res://Scripts/btn_salir.gd" id="2_7xf6m"]
-[ext_resource type="Script" path="res://Scripts/btn_opciones.gd" id="2_m0mmt"]
+[ext_resource type="Script" path="res://Scripts/btn_play.gd" id="1_v64hl"]
+[ext_resource type="Script" path="res://Scripts/btn_opciones.gd" id="2_nqg6s"]
+[ext_resource type="Script" path="res://Scripts/btn_salir.gd" id="3_oaqox"]
 
 [node name="Menu_init" type="Control"]
 layout_mode = 3
@@ -37,17 +37,20 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 10
 text = "Jugar
 "
-script = ExtResource("1_5pies")
+script = ExtResource("1_v64hl")
 
 [node name="opciones" type="Button" parent="menu/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 10
 text = "Opciones
 "
-script = ExtResource("2_m0mmt")
+script = ExtResource("2_nqg6s")
 
 [node name="salir" type="Button" parent="menu/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 10
 text = "salir"
-script = ExtResource("2_7xf6m")
+script = ExtResource("3_oaqox")
+
+[connection signal="pressed" from="menu/VBoxContainer/play" to="menu/VBoxContainer/play" method="_on_pressed"]
+[connection signal="pressed" from="menu/VBoxContainer/salir" to="menu/VBoxContainer/salir" method="_on_pressed"]

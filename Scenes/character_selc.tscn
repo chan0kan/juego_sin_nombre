@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://bvjnp2k7msan6"]
+[gd_scene load_steps=3 format=3 uid="uid://snpevwbqxbsj"]
 
 [ext_resource type="Script" path="res://Scripts/character_selc.gd" id="1_6mk3m"]
+[ext_resource type="PackedScene" uid="uid://k1kr482uajd0" path="res://Scenes/characters_1.tscn" id="2_i64u7"]
 
 [node name="character_selc" type="Control"]
 layout_mode = 3
@@ -12,3 +13,4 @@ grow_vertical = 2
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 script = ExtResource("1_6mk3m")
+characters = ExtResource("2_i64u7")

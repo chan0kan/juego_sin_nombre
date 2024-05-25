@@ -6,5 +6,5 @@ func _ready():
 	
 func on_btn_opt_pressed():
 	
-	get_tree().change_scene_to_file("res://Scenes/menu_opt.tscn")
+	get_tree().change_scene_to_file("res://Scenes/menu_opt.tscn") 
 
