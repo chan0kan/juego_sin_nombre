@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://k1kr482uajd0"]
+[gd_scene load_steps=31 format=3 uid="uid://k1kr482uajd0"]
 
 [ext_resource type="Script" path="res://Scripts/CharacterBody2D.gd" id="1_3kcjl"]
 [ext_resource type="Texture2D" uid="uid://c4pd2eagolcpv" path="res://Sprites/l0_sprite_20.png" id="2_6eap7"]
@@ -21,6 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://c55xy5cit6tvn" path="res://Sprites/l0_sprite_16.png" id="19_islfn"]
 [ext_resource type="Texture2D" uid="uid://bgreqppe12qi2" path="res://Sprites/l0_sprite_17.png" id="20_r7bgx"]
 [ext_resource type="Texture2D" uid="uid://c83fhyuxo51jn" path="res://Sprites/l0_sprite_18.png" id="21_oskc7"]
+[ext_resource type="Texture2D" uid="uid://clcg6vria3wo3" path="res://Sprites/icon.svg" id="22_qjj2y"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_1viep"]
 animations = [{
@@ -303,5 +304,34 @@ libraries = {
 
 [node name="Timer" type="Timer" parent="kata"]
 wait_time = 0.5
+
+[node name="TextureRect" type="TextureRect" parent="kata"]
+visible = false
+offset_left = 54.0
+offset_top = -68.0
+offset_right = 122.0
+offset_bottom = 73.0
+scale = Vector2(0.0849477, 0.0849477)
+texture = ExtResource("4_a16eb")
+
+[node name="godot" type="CharacterBody2D" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="godot"]
+offset_left = 54.0
+offset_top = -68.0
+offset_right = 1654.0
+offset_bottom = 1532.0
+scale = Vector2(0.0849477, 0.0849477)
+texture = ExtResource("22_qjj2y")
+
+[node name="godot2" type="CharacterBody2D" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="godot2"]
+offset_left = 54.0
+offset_top = -68.0
+offset_right = 1654.0
+offset_bottom = 1532.0
+scale = Vector2(0.0849477, 0.0849477)
+texture = ExtResource("22_qjj2y")
 
 [connection signal="animation_finished" from="kata/AnimationPlayer" to="kata" method="_on_animation_player_animation_finished"]

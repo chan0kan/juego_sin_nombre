@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://btownjm2yhfam"]
 
-[ext_resource type="Texture2D" uid="uid://clcg6vria3wo3" path="res://icon.svg" id="1_15711"]
+[ext_resource type="Texture2D" uid="uid://clcg6vria3wo3" path="res://Sprites/icon.svg" id="1_15711"]
 [ext_resource type="PackedScene" uid="uid://k1kr482uajd0" path="res://Scenes/characters_1.tscn" id="2_y3fcr"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rjgqv"]

@@ -1,7 +1,29 @@
-[gd_scene load_steps=3 format=3 uid="uid://snpevwbqxbsj"]
+[gd_scene load_steps=7 format=3 uid="uid://snpevwbqxbsj"]
 
 [ext_resource type="Script" path="res://Scripts/character_selc.gd" id="1_6mk3m"]
 [ext_resource type="PackedScene" uid="uid://k1kr482uajd0" path="res://Scenes/characters_1.tscn" id="2_i64u7"]
+[ext_resource type="Theme" uid="uid://byyp4q0f7d4v0" path="res://themes/btn_middle_theme.tres" id="3_shwwv"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6rffg"]
+draw_center = false
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.407843, 0.407843, 0.407843, 1)
+border_blend = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n7u7n"]
+draw_center = false
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.8, 0.8, 0.8, 0.772549)
+border_blend = true
+
+[sub_resource type="Theme" id="Theme_jc36q"]
+PanelContainer/styles/panel = null
 
 [node name="character_selc" type="Control"]
 layout_mode = 3
@@ -11,6 +33,62 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="character" type="CanvasLayer" parent="."]
 script = ExtResource("1_6mk3m")
 characters = ExtResource("2_i64u7")
+
+[node name="player_1" type="PanelContainer" parent="character"]
+offset_right = 47.0
+offset_bottom = 51.0
+scale = Vector2(10.5472, 8.70421)
+theme_override_styles/panel = SubResource("StyleBoxFlat_6rffg")
+
+[node name="img_char_1" type="TextureRect" parent="character/player_1"]
+layout_mode = 2
+expand_mode = 1
+
+[node name="player_2" type="PanelContainer" parent="character"]
+offset_left = 655.0
+offset_right = 702.0
+offset_bottom = 51.0
+scale = Vector2(10.5472, 8.70421)
+theme_override_styles/panel = SubResource("StyleBoxFlat_6rffg")
+
+[node name="img_char_2" type="TextureRect" parent="character/player_2"]
+layout_mode = 2
+expand_mode = 1
+
+[node name="btn-middle-aling" type="VBoxContainer" parent="character"]
+clip_children = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -80.0
+offset_top = -324.0
+offset_right = 79.0
+offset_bottom = 120.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_shwwv")
+alignment = 1
+
+[node name="ready_btn" type="Button" parent="character/btn-middle-aling"]
+layout_mode = 2
+text = "READY"
+
+[node name="btn_char_container" type="PanelContainer" parent="character"]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -176.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_n7u7n")
+
+[node name="H_btn_aling" type="HFlowContainer" parent="character/btn_char_container"]
+layout_mode = 2
+theme = SubResource("Theme_jc36q")
+alignment = 1

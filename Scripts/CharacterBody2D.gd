@@ -17,10 +17,12 @@ func _ready():
 # De aca
 func _process(delta):
 	
-	if not is_on_floor(): 
+	if not is_on_floor():
 		velocity.y += GRAVITY
 		SPEED = 670
+
 	else:
+		
 		SPEED = 300
 		velocity.y = 0
 # Hasta acá sabes lo que hace (define las propiedades del salto)

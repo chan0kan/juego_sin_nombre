@@ -1,0 +1,84 @@
+[gd_scene format=3 uid="uid://dsr66kbddqj84"]
+
+[node name="TEST" type="Node"]
+
+[node name="VFlowContainer" type="VFlowContainer" parent="."]
+offset_right = 165.0
+offset_bottom = 170.0
+size_flags_horizontal = 6
+alignment = 1
+
+[node name="Button" type="Button" parent="VFlowContainer"]
+layout_mode = 2
+text = "hello"
+
+[node name="Button2" type="Button" parent="VFlowContainer"]
+layout_mode = 2
+text = "hello"
+
+[node name="Button3" type="Button" parent="VFlowContainer"]
+layout_mode = 2
+text = "hello"
+
+[node name="Button4" type="Button" parent="VFlowContainer"]
+layout_mode = 2
+text = "hello"
+
+[node name="HFlowContainer" type="HFlowContainer" parent="."]
+offset_left = 695.0
+offset_top = 264.0
+offset_right = 991.0
+offset_bottom = 404.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+alignment = 1
+
+[node name="Button" type="Button" parent="HFlowContainer"]
+layout_mode = 2
+text = "hello"
+
+[node name="Button2" type="Button" parent="HFlowContainer"]
+layout_mode = 2
+text = "hello"
+
+[node name="Button3" type="Button" parent="HFlowContainer"]
+layout_mode = 2
+text = "hello"
+
+[node name="Button4" type="Button" parent="HFlowContainer"]
+layout_mode = 2
+text = "hello"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -184.5
+offset_top = -68.0
+offset_right = 184.5
+offset_bottom = 68.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Button" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "hello"
+
+[node name="Button2" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "hello"
+
+[node name="Button3" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "hello"
+
+[node name="Button4" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "hello"
