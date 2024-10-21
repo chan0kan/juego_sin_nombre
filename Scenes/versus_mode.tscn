@@ -1,0 +1,51 @@
+[gd_scene load_steps=3 format=3 uid="uid://xq03qxlyh513"]
+
+[ext_resource type="Script" path="res://Scripts/versus_management.gd" id="1_v2t26"]
+[ext_resource type="Script" path="res://Scripts/versus_hud_mag.gd" id="2_irbpm"]
+
+[node name="versus_hud" type="Node"]
+script = ExtResource("1_v2t26")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(577, 328)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+script = ExtResource("2_irbpm")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+offset_left = 50.0
+offset_top = 4.0
+offset_right = 279.0
+offset_bottom = 138.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="player_1" type="Label" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 75
+
+[node name="ProgressBar_p1" type="ProgressBar" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+value = 100.0
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="CanvasLayer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -278.0
+offset_right = -49.0
+offset_bottom = 134.0
+grow_horizontal = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="player_2" type="Label" parent="CanvasLayer/VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_font_sizes/font_size = 75
+
+[node name="ProgressBar_p2" type="ProgressBar" parent="CanvasLayer/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 1
+value = 100.0

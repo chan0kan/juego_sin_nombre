@@ -1,0 +1,71 @@
+[gd_scene load_steps=5 format=3 uid="uid://duxrgkikt5p5a"]
+
+[ext_resource type="Theme" uid="uid://bkgs3h4xafy1f" path="res://themes/menu_theme.tres" id="1_ufcsc"]
+[ext_resource type="Texture2D" uid="uid://n4f5jxsucf6h" path="res://Sprites/HUD/char_selc_chart.png" id="2_wt3g2"]
+[ext_resource type="Script" path="res://Scripts/maps_btn.gd" id="3_cvcbs"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5n31h"]
+content_margin_top = 20.0
+bg_color = Color(0, 0.133333, 0.211765, 0.603922)
+
+[node name="map_selc" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_cvcbs")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_ufcsc")
+
+[node name="map_container" type="NinePatchRect" parent="Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -300.0
+offset_top = 50.0
+offset_right = 300.0
+offset_bottom = 350.0
+grow_horizontal = 2
+texture = ExtResource("2_wt3g2")
+region_rect = Rect2(0, 0, 300, 300)
+patch_margin_left = 12
+patch_margin_top = 13
+patch_margin_right = 12
+patch_margin_bottom = 12
+
+[node name="map_img" type="TextureRect" parent="Panel/map_container"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 12.0
+offset_top = 14.0
+offset_right = -13.0
+offset_bottom = -12.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="btn_map_containe" type="PanelContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -266.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_5n31h")
+
+[node name="H_btn_aling" type="HFlowContainer" parent="Panel/btn_map_containe"]
+layout_mode = 2
+alignment = 1

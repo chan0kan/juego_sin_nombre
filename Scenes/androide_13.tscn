@@ -1,0 +1,141 @@
+[gd_scene load_steps=12 format=3 uid="uid://bqfgriymsh0vf"]
+
+[ext_resource type="Texture2D" uid="uid://cqasbi3lp5cde" path="res://Sprites/Android 13(idle).png" id="1_k16gt"]
+[ext_resource type="Texture2D" uid="uid://bd6g3ng1oofry" path="res://Sprites/Kata/l0_sprite_01.png" id="2_eck87"]
+[ext_resource type="Script" path="res://Scripts/weapon.gd" id="3_5ncyd"]
+[ext_resource type="PackedScene" uid="uid://cbvj4hgb2ddkn" path="res://Scenes/PlayerControl.tscn" id="4_ce8kj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1t7r5"]
+size = Vector2(12.6181, 24.3063)
+
+[sub_resource type="Animation" id="Animation_racmt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprites_1:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprites_1:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [5]
+}
+
+[sub_resource type="Animation" id="Animation_shtm2"]
+resource_name = "idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprites_1:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 2, 4]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprites_1:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [5]
+}
+
+[sub_resource type="Animation" id="Animation_e3s4q"]
+resource_name = "walk"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2swgq"]
+_data = {
+"RESET": SubResource("Animation_racmt"),
+"idle": SubResource("Animation_shtm2"),
+"walk": SubResource("Animation_e3s4q")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d5rsl"]
+size = Vector2(28.4213, 9.51399)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ogs4r"]
+size = Vector2(82.3183, 15.3277)
+
+[node name="Androide_13" type="CharacterBody2D"]
+
+[node name="hurt_box" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 4)
+scale = Vector2(6.26087, 5.84211)
+shape = SubResource("RectangleShape2D_1t7r5")
+
+[node name="Sprites_1" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(38, 1)
+texture = ExtResource("1_k16gt")
+hframes = 5
+region_filter_clip_enabled = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_2swgq")
+}
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+
+[node name="char_img" type="TextureRect" parent="."]
+visible = false
+offset_left = 54.0
+offset_top = -68.0
+offset_right = 122.0
+offset_bottom = 73.0
+scale = Vector2(0.0849477, 0.0849477)
+texture = ExtResource("2_eck87")
+
+[node name="med_attack" type="Area2D" parent="."]
+process_mode = 4
+script = ExtResource("3_5ncyd")
+
+[node name="attack_hitbox" type="CollisionShape2D" parent="med_attack"]
+position = Vector2(41.1498, -17)
+scale = Vector2(1.045, 2.08933)
+shape = SubResource("RectangleShape2D_d5rsl")
+debug_color = Color(1, 0, 0, 0.172549)
+
+[node name="low_attack" type="Area2D" parent="."]
+process_mode = 4
+position = Vector2(64.8921, 62.1308)
+scale = Vector2(1, 0.975249)
+script = ExtResource("3_5ncyd")
+
+[node name="hitbox" type="CollisionShape2D" parent="low_attack"]
+shape = SubResource("RectangleShape2D_ogs4r")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -21.0
+offset_top = -95.0
+offset_right = 19.0
+offset_bottom = -72.0
+
+[node name="PlayerControl" parent="." instance=ExtResource("4_ce8kj")]
+
+[connection signal="body_entered" from="med_attack" to="med_attack" method="_on_body_entered"]
+[connection signal="body_entered" from="low_attack" to="low_attack" method="_on_body_entered"]

@@ -1,8 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://bhiy6ovoimgrs"]
+[gd_scene load_steps=8 format=3 uid="uid://bhiy6ovoimgrs"]
 
-[ext_resource type="Script" path="res://Scripts/btn_play.gd" id="1_v64hl"]
-[ext_resource type="Script" path="res://Scripts/btn_opciones.gd" id="2_nqg6s"]
-[ext_resource type="Script" path="res://Scripts/btn_salir.gd" id="3_oaqox"]
+[ext_resource type="Script" path="res://Scripts/menu_initial.gd" id="1_gyw0t"]
+[ext_resource type="Theme" uid="uid://bkgs3h4xafy1f" path="res://themes/menu_theme.tres" id="1_wfpax"]
+[ext_resource type="Script" path="res://Scripts/options_script.gd" id="2_h2qq7"]
+[ext_resource type="Texture2D" uid="uid://clcg6vria3wo3" path="res://Sprites/icon.svg" id="2_lp6ka"]
+[ext_resource type="Texture2D" uid="uid://d4ix8tcgsq7r8" path="res://Sprites/HUD/btn_menu.png" id="2_wj3qo"]
+
+[sub_resource type="Theme" id="Theme_e0fe4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tjp6r"]
+content_margin_left = 50.0
+content_margin_top = 42.0
+content_margin_right = 50.0
 
 [node name="Menu_init" type="Control"]
 layout_mode = 3
@@ -12,45 +21,141 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="menu" type="CanvasLayer" parent="."]
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_wfpax")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="menu"]
+[node name="menu" type="CanvasLayer" parent="Panel"]
+script = ExtResource("1_gyw0t")
+
+[node name="Vbtn_container" type="VBoxContainer" parent="Panel/menu"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -25.0
-offset_top = -20.0
-offset_right = 25.0
-offset_bottom = 20.0
+offset_left = -495.0
+offset_top = -241.0
+offset_right = -395.0
+offset_bottom = 39.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(2.00385, 1.61917)
-pivot_offset = Vector2(26.5, 32.5)
-size_flags_horizontal = 4
-size_flags_vertical = 4
+theme_override_constants/separation = 95
 alignment = 1
 
-[node name="play" type="Button" parent="menu/VBoxContainer"]
+[node name="play" type="TextureButton" parent="Panel/menu/Vbtn_container"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 10
-text = "Jugar
+theme = SubResource("Theme_e0fe4")
+texture_normal = ExtResource("2_wj3qo")
+
+[node name="play_label" type="Label" parent="Panel/menu/Vbtn_container/play"]
+z_as_relative = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_wfpax")
+text = "Jugar"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="options" type="TextureButton" parent="Panel/menu/Vbtn_container"]
+layout_mode = 2
+texture_normal = ExtResource("2_wj3qo")
+
+[node name="opt_label" type="Label" parent="Panel/menu/Vbtn_container/options"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_wfpax")
+text = "Opciones"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="out" type="TextureButton" parent="Panel/menu/Vbtn_container"]
+layout_mode = 2
+texture_normal = ExtResource("2_wj3qo")
+
+[node name="out_label" type="Label" parent="Panel/menu/Vbtn_container/out"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_wfpax")
+text = "Salir"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="options" type="CanvasLayer" parent="Panel"]
+visible = false
+script = ExtResource("2_h2qq7")
+
+[node name="PanelContainer" type="PanelContainer" parent="Panel/options"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -200.0
+offset_right = 200.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_tjp6r")
+
+[node name="GridContainer" type="GridContainer" parent="Panel/options/PanelContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+columns = 2
+
+[node name="music" type="Label" parent="Panel/options/PanelContainer/GridContainer"]
+layout_mode = 2
+text = "Music"
+
+[node name="music_slider" type="HSlider" parent="Panel/options/PanelContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+
+[node name="SFX" type="Label" parent="Panel/options/PanelContainer/GridContainer"]
+layout_mode = 2
+text = "SFX
 "
-script = ExtResource("1_v64hl")
+horizontal_alignment = 1
 
-[node name="opciones" type="Button" parent="menu/VBoxContainer"]
+[node name="SFX_slider" type="HSlider" parent="Panel/options/PanelContainer/GridContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 10
-text = "Opciones
-"
-script = ExtResource("2_nqg6s")
+size_flags_horizontal = 3
+size_flags_vertical = 4
 
-[node name="salir" type="Button" parent="menu/VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 10
-text = "salir"
-script = ExtResource("3_oaqox")
+[node name="TextureButton" type="TextureButton" parent="Panel/options"]
+offset_left = 390.0
+offset_top = 133.0
+offset_right = 428.0
+offset_bottom = 171.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("2_lp6ka")
+ignore_texture_size = true
+stretch_mode = 0
 
-[connection signal="pressed" from="menu/VBoxContainer/play" to="menu/VBoxContainer/play" method="_on_pressed"]
-[connection signal="pressed" from="menu/VBoxContainer/salir" to="menu/VBoxContainer/salir" method="_on_pressed"]
+[connection signal="pressed" from="Panel/menu/Vbtn_container/play" to="Panel/menu" method="_on_play_pressed"]
+[connection signal="pressed" from="Panel/menu/Vbtn_container/options" to="Panel/menu" method="_on_options_pressed"]
+[connection signal="pressed" from="Panel/menu/Vbtn_container/out" to="Panel/menu" method="_on_out_pressed"]
+[connection signal="pressed" from="Panel/options/TextureButton" to="Panel/options" method="_on_texture_button_pressed"]

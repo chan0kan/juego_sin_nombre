@@ -1,0 +1,21 @@
+[gd_resource type="Theme" load_steps=6 format=3 uid="uid://bkgs3h4xafy1f"]
+
+[ext_resource type="FontFile" uid="uid://31dkvlwkcypr" path="res://themes/fonts/Vermin Vibes 1989.ttf" id="1_2bnbd"]
+
+[sub_resource type="FontVariation" id="FontVariation_s688f"]
+base_font = ExtResource("1_2bnbd")
+
+[sub_resource type="Gradient" id="Gradient_5fkub"]
+colors = PackedColorArray(0.172549, 0.45098, 0.603922, 1, 0, 0.203922, 0.317647, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_qaryk"]
+gradient = SubResource("Gradient_5fkub")
+fill_from = Vector2(0, 1)
+fill_to = Vector2(0.401709, 0)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wcb2a"]
+texture = SubResource("GradientTexture2D_qaryk")
+
+[resource]
+Label/fonts/font = SubResource("FontVariation_s688f")
+Panel/styles/panel = SubResource("StyleBoxTexture_wcb2a")

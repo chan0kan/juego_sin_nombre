@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://dmamnvlxt4swi"]
+
+[ext_resource type="PackedScene" uid="uid://0di5my1f25du" path="res://Scenes/arena_1.tscn" id="1_3uucl"]
+[ext_resource type="PackedScene" uid="uid://cwlmh3pyk4tpx" path="res://Scenes/arena_2.tscn" id="2_ruvc3"]
+
+[node name="maps" type="Node2D"]
+
+[node name="arena_1" parent="." instance=ExtResource("1_3uucl")]
+
+[node name="arena_2" parent="." instance=ExtResource("2_ruvc3")]

@@ -1,0 +1,4 @@
+
+1- La hitbox del personaje al atacar hace que se ocasione daño a si mismo si su hitbox de ataque toca la hitbox del personaje
+
+2- 

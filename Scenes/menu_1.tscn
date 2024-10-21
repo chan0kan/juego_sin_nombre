@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://dcwibw7es5iox"]
+[gd_scene load_steps=4 format=3 uid="uid://dcwibw7es5iox"]
 
-[ext_resource type="Script" path="res://Scripts/btn_versus.gd" id="1_kk75u"]
+[ext_resource type="Theme" uid="uid://bkgs3h4xafy1f" path="res://themes/menu_theme.tres" id="1_2h117"]
+[ext_resource type="Texture2D" uid="uid://d4ix8tcgsq7r8" path="res://Sprites/HUD/btn_menu.png" id="2_bjbeq"]
+[ext_resource type="Script" path="res://Scripts/menu_1.gd" id="2_moelw"]
 
 [node name="menu_1" type="Control"]
 layout_mode = 3
@@ -10,7 +12,17 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="menu" type="CanvasLayer" parent="."]
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_2h117")
+
+[node name="menu" type="CanvasLayer" parent="." groups=["btn_menu_1"]]
+script = ExtResource("2_moelw")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="menu"]
 anchors_preset = 8
@@ -18,33 +30,65 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -25.0
-offset_top = -20.0
-offset_right = 25.0
-offset_bottom = 20.0
+offset_left = -495.0
+offset_top = -241.0
+offset_right = -395.0
+offset_bottom = 39.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(2.00385, 1.61917)
-pivot_offset = Vector2(26.5, 32.5)
 size_flags_horizontal = 4
 size_flags_vertical = 4
+theme = ExtResource("1_2h117")
+theme_override_constants/separation = 95
 alignment = 1
 
-[node name="versus" type="Button" parent="menu/VBoxContainer"]
+[node name="versus" type="TextureButton" parent="menu/VBoxContainer" groups=["btn"]]
 layout_mode = 2
-theme_override_font_sizes/font_size = 10
-text = "Versus"
-script = ExtResource("1_kk75u")
+texture_normal = ExtResource("2_bjbeq")
 
-[node name="practice" type="Button" parent="menu/VBoxContainer"]
+[node name="versus_label" type="Label" parent="menu/VBoxContainer/versus"]
+z_as_relative = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Duelo"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="practice" type="TextureButton" parent="menu/VBoxContainer" groups=["btn"]]
 layout_mode = 2
-theme_override_font_sizes/font_size = 10
-text = "Practice"
+texture_normal = ExtResource("2_bjbeq")
 
-[node name="btn3" type="Button" parent="menu/VBoxContainer"]
+[node name="opt_label" type="Label" parent="menu/VBoxContainer/practice"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Practica"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="out" type="TextureButton" parent="menu/VBoxContainer" groups=["btn"]]
 layout_mode = 2
-theme_override_font_sizes/font_size = 10
-text = "btn
-"
+texture_normal = ExtResource("2_bjbeq")
 
-[connection signal="pressed" from="menu/VBoxContainer/versus" to="menu/VBoxContainer/versus" method="_on_pressed"]
+[node name="out_label" type="Label" parent="menu/VBoxContainer/out"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Volver"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="menu/VBoxContainer/versus" to="menu" method="_on_versus_pressed"]
+[connection signal="pressed" from="menu/VBoxContainer/practice" to="menu" method="_on_practice_pressed"]
+[connection signal="pressed" from="menu/VBoxContainer/out" to="menu" method="_on_out_pressed"]
