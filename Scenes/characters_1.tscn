@@ -1,11 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://k1kr482uajd0"]
+[gd_scene load_steps=3 format=3 uid="uid://k1kr482uajd0"]
 
-[ext_resource type="Script" path="res://Scripts/chars_script.gd" id="1_l7egs"]
 [ext_resource type="PackedScene" uid="uid://c26rs54v4kwp7" path="res://Scenes/kata.tscn" id="3_hwmyv"]
 [ext_resource type="PackedScene" uid="uid://dg3rmuveohjne" path="res://Scenes/caballero.tscn" id="4_4mjv7"]
-[ext_resource type="Texture2D" uid="uid://clcg6vria3wo3" path="res://Sprites/icon.svg" id="22_qjj2y"]
-
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_xowcy"]
 
 [node name="characters" type="Node2D"]
 
@@ -14,25 +10,3 @@ scale = Vector2(1.57208, 1.57208)
 
 [node name="caballero" parent="." instance=ExtResource("4_4mjv7")]
 scale = Vector2(3.8335, 4.29979)
-
-[node name="godot" type="CharacterBody2D" parent="."]
-script = ExtResource("1_l7egs")
-
-[node name="char_img" type="TextureRect" parent="godot"]
-material = SubResource("CanvasItemMaterial_xowcy")
-offset_left = 316.0
-offset_top = -42.0
-offset_right = 1916.0
-offset_bottom = 1558.0
-scale = Vector2(0.0545821, 0.0545821)
-texture = ExtResource("22_qjj2y")
-
-[node name="godot2" type="CharacterBody2D" parent="."]
-
-[node name="TextureRect" type="TextureRect" parent="godot2"]
-offset_left = 78.0
-offset_top = -63.0
-offset_right = 1678.0
-offset_bottom = 1537.0
-scale = Vector2(0.0849477, 0.0849477)
-texture = ExtResource("22_qjj2y")

@@ -1,7 +1,7 @@
 extends Node
 
 var arena_selected : bool
-var arena : Node2D
+var arena 
 
 var pos_1
 var pos_2

@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://c26rs54v4kwp7"]
+[gd_scene load_steps=39 format=3 uid="uid://c26rs54v4kwp7"]
 
 [ext_resource type="Texture2D" uid="uid://c4pd2eagolcpv" path="res://Sprites/Kata/l0_sprite_20.png" id="1_cw8id"]
 [ext_resource type="Script" path="res://Scripts/chars_script.gd" id="1_uqnbi"]
@@ -23,6 +23,7 @@
 [ext_resource type="Texture2D" uid="uid://c83fhyuxo51jn" path="res://Sprites/Kata/l0_sprite_18.png" id="20_jpml3"]
 [ext_resource type="Script" path="res://Scripts/weapon.gd" id="21_42amu"]
 [ext_resource type="PackedScene" uid="uid://cbvj4hgb2ddkn" path="res://Scenes/PlayerControl.tscn" id="23_xaemj"]
+[ext_resource type="PackedScene" uid="uid://bnf4yws7alrax" path="res://Scenes/combo_manager.tscn" id="24_sranb"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_lubfl"]
 animations = [{
@@ -114,6 +115,73 @@ animations = [{
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_25l5l"]
 size = Vector2(7.98611, 22.9)
+
+[sub_resource type="Animation" id="Animation_avpf0"]
+resource_name = "LOW_ATTACK"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Attack_hit_boxs/low_attack/hitbox:debug_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Color(1, 1, 1, 0), Color(1, 0, 0, 0.305882)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Attack_hit_boxs/low_attack:process_mode")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [4, 0]
+}
+
+[sub_resource type="Animation" id="Animation_syqvg"]
+resource_name = "NORMAL_ATTACK"
+length = 0.24
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprites_1:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.10022, 0.239688),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [ExtResource("1_cw8id"), ExtResource("2_nqt44"), ExtResource("3_3i8rt")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Attack_hit_boxs/med_attack/attack_hitbox:debug_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1, 0.239971),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 0, 0, 0.172549), Color(1, 1, 1, 0.172549)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Attack_hit_boxs/med_attack:process_mode")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.239971),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 4]
+}
 
 [sub_resource type="Animation" id="Animation_828g6"]
 length = 0.001
@@ -271,6 +339,9 @@ tracks/1/keys = {
 "values": [Vector2(0, -150), Vector2(0, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_4cc55"]
+resource_name = "hit"
+
 [sub_resource type="Animation" id="Animation_miqbg"]
 resource_name = "idle"
 length = 2.0
@@ -312,101 +383,6 @@ tracks/2/keys = {
 "values": [Vector2(6.147, 5)]
 }
 
-[sub_resource type="Animation" id="Animation_v8vrc"]
-resource_name = "jump"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprites_1:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("5_12q04")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(0, -150)]
-}
-
-[sub_resource type="Animation" id="Animation_avpf0"]
-resource_name = "low_attack"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Attack_hit_boxs/low_attack/hitbox:debug_color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [Color(1, 1, 1, 0), Color(1, 0, 0, 0.305882)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Attack_hit_boxs/low_attack:process_mode")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [4, 0]
-}
-
-[sub_resource type="Animation" id="Animation_syqvg"]
-resource_name = "med_attack"
-length = 0.24
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprites_1:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.10022, 0.239688),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [ExtResource("1_cw8id"), ExtResource("2_nqt44"), ExtResource("3_3i8rt")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Attack_hit_boxs/med_attack/attack_hitbox:debug_color")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.1, 0.239971),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 0, 0, 0.172549), Color(1, 1, 1, 0.172549)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Attack_hit_boxs/med_attack:process_mode")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.239971),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0, 4]
-}
-
 [sub_resource type="Animation" id="Animation_o64r4"]
 resource_name = "walk"
 length = 1.4
@@ -442,13 +418,13 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_eme2x"]
 _data = {
+"LOW_ATTACK": SubResource("Animation_avpf0"),
+"NORMAL_ATTACK": SubResource("Animation_syqvg"),
 "RESET": SubResource("Animation_828g6"),
 "defend": SubResource("Animation_tibnl"),
 "drop": SubResource("Animation_lr2la"),
+"hit": SubResource("Animation_4cc55"),
 "idle": SubResource("Animation_miqbg"),
-"jump": SubResource("Animation_v8vrc"),
-"low_attack": SubResource("Animation_avpf0"),
-"med_attack": SubResource("Animation_syqvg"),
 "walk": SubResource("Animation_o64r4"),
 "walk_back": SubResource("Animation_6jibw")
 }
@@ -529,7 +505,12 @@ script = ExtResource("21_42amu")
 [node name="hitbox" type="CollisionShape2D" parent="Attack_hit_boxs/low_attack"]
 shape = SubResource("RectangleShape2D_ypeop")
 
+[node name="ComboManager" parent="." instance=ExtResource("24_sranb")]
+
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="animation_finished" from="AnimationPlayer" to="PlayerControl" method="_on_animation_player_animation_finished"]
+[connection signal="add_current_state" from="PlayerControl" to="ComboManager" method="_on_player_control_add_current_state"]
+[connection signal="key_released" from="PlayerControl" to="ComboManager" method="_on_player_control_key_released"]
+[connection signal="show_current_state" from="PlayerControl" to="." method="_on_player_control_show_current_state"]
 [connection signal="body_entered" from="Attack_hit_boxs/med_attack" to="Attack_hit_boxs/med_attack" method="_on_body_entered"]
 [connection signal="body_entered" from="Attack_hit_boxs/low_attack" to="Attack_hit_boxs/low_attack" method="_on_body_entered"]

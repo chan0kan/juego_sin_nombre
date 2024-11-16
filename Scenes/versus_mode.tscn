@@ -1,18 +1,124 @@
-[gd_scene load_steps=3 format=3 uid="uid://xq03qxlyh513"]
+[gd_scene load_steps=10 format=3 uid="uid://xq03qxlyh513"]
 
 [ext_resource type="Script" path="res://Scripts/versus_management.gd" id="1_v2t26"]
+[ext_resource type="Script" path="res://Scripts/Camera2D.gd" id="2_b3bcw"]
 [ext_resource type="Script" path="res://Scripts/versus_hud_mag.gd" id="2_irbpm"]
+[ext_resource type="AudioStream" uid="uid://kps06fxo3f58" path="res://music/Pelea.wav" id="3_5qsur"]
+[ext_resource type="FontFile" uid="uid://1rwc3dvrvqlv" path="res://themes/fonts/Road_Rage.otf" id="5_gkwhw"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ngd3s"]
+font = ExtResource("5_gkwhw")
+font_size = 100
+font_color = Color(0.980392, 0.219608, 0, 1)
+outline_size = 25
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 0
+shadow_color = Color(0.662745, 0.662745, 0.662745, 0)
+
+[sub_resource type="Animation" id="Animation_qsme7"]
+resource_name = "ready_animation"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ready_label:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.2, 0.6, 1, 1.5, 2, 2.4, 2.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": ["3", "", "2", "", "1
+", "", "FIGHT"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ready_label:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 1, 1.2, 2, 2.2, 2.8, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1.30713, 1.30713), Vector2(0.736558, 0.736558), Vector2(1.30713, 1.30713), Vector2(0.736558, 0.736558), Vector2(1.30713, 1.30713), Vector2(0.736558, 0.736558), Vector2(1.30713, 1.30713), Vector2(0.736558, 0.736558)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ready_label:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 1, 1.2, 2, 2.2, 2.8, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(395, 285), Vector2(472, 325), Vector2(395, 285), Vector2(472, 325), Vector2(395, 285), Vector2(472, 325), Vector2(395, 285), Vector2(472, 325)]
+}
+
+[sub_resource type="Animation" id="Animation_1lwil"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ready_label:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["3"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ready_label:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(8.21662, 8.21662)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ready_label:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(395, 285)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dhiv7"]
+_data = {
+"RESET": SubResource("Animation_1lwil"),
+"ready_animation": SubResource("Animation_qsme7")
+}
 
 [node name="versus_hud" type="Node"]
 script = ExtResource("1_v2t26")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(577, 328)
+position = Vector2(582, 381)
+limit_left = -400
+limit_top = 0
+limit_right = 1800
+limit_bottom = 650
+limit_smoothed = true
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0
+script = ExtResource("2_b3bcw")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="HUD" type="CanvasLayer" parent="."]
 script = ExtResource("2_irbpm")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="HUD"]
 offset_left = 50.0
 offset_top = 4.0
 offset_right = 279.0
@@ -20,16 +126,16 @@ offset_bottom = 138.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="player_1" type="Label" parent="CanvasLayer/VBoxContainer"]
+[node name="player_1" type="Label" parent="HUD/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_font_sizes/font_size = 75
 
-[node name="ProgressBar_p1" type="ProgressBar" parent="CanvasLayer/VBoxContainer"]
+[node name="ProgressBar_p1" type="ProgressBar" parent="HUD/VBoxContainer"]
 layout_mode = 2
 value = 100.0
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="CanvasLayer"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="HUD"]
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
@@ -40,12 +146,52 @@ grow_horizontal = 0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="player_2" type="Label" parent="CanvasLayer/VBoxContainer2"]
+[node name="player_2" type="Label" parent="HUD/VBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 8
 theme_override_font_sizes/font_size = 75
 
-[node name="ProgressBar_p2" type="ProgressBar" parent="CanvasLayer/VBoxContainer2"]
+[node name="ProgressBar_p2" type="ProgressBar" parent="HUD/VBoxContainer2"]
 layout_mode = 2
 size_flags_vertical = 1
 value = 100.0
+
+[node name="Ready_timer" type="Timer" parent="."]
+wait_time = 3.5
+one_shot = true
+
+[node name="Music_player" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_5qsur")
+
+[node name="ready_label" type="Label" parent="."]
+texture_filter = 6
+texture_repeat = 2
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 395.0
+offset_top = 285.0
+offset_right = 681.0
+offset_bottom = 443.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(8.21662, 8.21662)
+pivot_offset = Vector2(20, 10)
+size_flags_horizontal = 4
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+text = "3"
+label_settings = SubResource("LabelSettings_ngd3s")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_dhiv7")
+}
+
+[node name="pause_menu" type="CanvasLayer" parent="."]
+
+[connection signal="timeout" from="Ready_timer" to="." method="_on_timer_timeout"]
+[connection signal="finished" from="Music_player" to="." method="_on_music_player_finished"]

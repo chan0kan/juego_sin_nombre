@@ -69,3 +69,10 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_5n31h")
 [node name="H_btn_aling" type="HFlowContainer" parent="Panel/btn_map_containe"]
 layout_mode = 2
 alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 499.0
+offset_top = 159.0
+offset_right = 539.0
+offset_bottom = 199.0

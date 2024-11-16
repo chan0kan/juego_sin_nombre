@@ -1,0 +1,114 @@
+[gd_scene load_steps=7 format=3 uid="uid://d1cgar70axyvr"]
+
+[ext_resource type="Texture2D" uid="uid://bb2yob3etn7g6" path="res://mapa2d/mapa2d/primera_capa.png" id="1_mxmhp"]
+[ext_resource type="Texture2D" uid="uid://bgarnkcrd1qyx" path="res://mapa2d/mapa2d/segunda_capa.png" id="2_t3erx"]
+[ext_resource type="Texture2D" uid="uid://c0a7xrjsk7ui1" path="res://mapa2d/mapa2d/tercer_capa.png" id="3_x4jub"]
+[ext_resource type="Texture2D" uid="uid://56ll3ausmmr" path="res://mapa2d/mapa2d/piso_pasto.png" id="4_n681j"]
+[ext_resource type="Texture2D" uid="uid://ubj45x65wa4t" path="res://mapa2d/mapa2d/piso_pasto_2.png" id="5_jn331"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hgg21"]
+size = Vector2(1025, 20)
+
+[node name="ParallaxBackground" type="ParallaxBackground"]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.1, 0.1)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer"]
+texture = ExtResource("1_mxmhp")
+
+[node name="Sprite2D2" type="Sprite2D" parent="ParallaxLayer"]
+position = Vector2(-256, 0)
+texture = ExtResource("1_mxmhp")
+
+[node name="Sprite2D3" type="Sprite2D" parent="ParallaxLayer"]
+position = Vector2(512, 0)
+texture = ExtResource("1_mxmhp")
+
+[node name="Sprite2D4" type="Sprite2D" parent="ParallaxLayer"]
+position = Vector2(256, 0)
+texture = ExtResource("1_mxmhp")
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.2, 0.2)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer2"]
+texture = ExtResource("2_t3erx")
+
+[node name="Sprite2D2" type="Sprite2D" parent="ParallaxLayer2"]
+position = Vector2(-256, 0)
+texture = ExtResource("2_t3erx")
+
+[node name="Sprite2D3" type="Sprite2D" parent="ParallaxLayer2"]
+position = Vector2(512, 0)
+texture = ExtResource("2_t3erx")
+
+[node name="Sprite2D4" type="Sprite2D" parent="ParallaxLayer2"]
+position = Vector2(256, 0)
+texture = ExtResource("2_t3erx")
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.3, 0.3)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer3"]
+texture = ExtResource("3_x4jub")
+
+[node name="Sprite2D2" type="Sprite2D" parent="ParallaxLayer3"]
+position = Vector2(512, 0)
+texture = ExtResource("3_x4jub")
+
+[node name="Sprite2D3" type="Sprite2D" parent="ParallaxLayer3"]
+position = Vector2(-256, 0)
+texture = ExtResource("3_x4jub")
+
+[node name="Sprite2D4" type="Sprite2D" parent="ParallaxLayer3"]
+position = Vector2(256, 0)
+texture = ExtResource("3_x4jub")
+
+[node name="ParallaxLayer4" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.4, 0.4)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer4"]
+texture = ExtResource("4_n681j")
+
+[node name="Sprite2D2" type="Sprite2D" parent="ParallaxLayer4"]
+position = Vector2(512, 0)
+texture = ExtResource("4_n681j")
+
+[node name="Sprite2D3" type="Sprite2D" parent="ParallaxLayer4"]
+position = Vector2(-256, 0)
+texture = ExtResource("4_n681j")
+
+[node name="Sprite2D4" type="Sprite2D" parent="ParallaxLayer4"]
+position = Vector2(256, 0)
+texture = ExtResource("4_n681j")
+
+[node name="ParallaxLayer5" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.4, 0.4)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer5"]
+texture = ExtResource("5_jn331")
+
+[node name="Sprite2D2" type="Sprite2D" parent="ParallaxLayer5"]
+position = Vector2(256, 0)
+texture = ExtResource("5_jn331")
+
+[node name="Sprite2D3" type="Sprite2D" parent="ParallaxLayer5"]
+position = Vector2(512, 0)
+texture = ExtResource("5_jn331")
+
+[node name="Sprite2D4" type="Sprite2D" parent="ParallaxLayer5"]
+position = Vector2(-255, 0)
+texture = ExtResource("5_jn331")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(127.5, 110)
+shape = SubResource("RectangleShape2D_hgg21")
+
+[node name="player_1_pos" type="Marker2D" parent="."]
+position = Vector2(-10, 60)
+
+[node name="player_2_pos" type="Marker2D" parent="."]
+position = Vector2(300, 60)
